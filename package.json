@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": ""
+    "copy": "cp ./src/index.html ./public/ && cp -R ./src/assets ./public/ && cp -R ./src/js ./public/",
+    "uglify:js": "npx uglifyjs ./public/js/main.js -o ./public/js/main.js",
+    "compile:scss": "npx sass ./src/scss/global.scss ./public/css/global.css",
+    "build": "npm run copy && npm run compile:scss && npm run uglify:js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/ohnoitsfraa/fraa-dev-v2/issues"
   },
-  "homepage": "https://github.com/ohnoitsfraa/fraa-dev-v2#readme"
+  "homepage": "https://github.com/ohnoitsfraa/fraa-dev-v2#readme",
+  "dependencies": {
+    "sass": "^1.56.1",
+    "uglify-js": "^3.17.4"
+  }
 }
